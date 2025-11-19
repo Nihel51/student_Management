@@ -1,11 +1,14 @@
-# Vérifier que vous êtes à la racine du projet
-cd ~/student_Management
+# Image de base Java - Stable et maintenue
+FROM eclipse-temurin:17-jdk-alpine
 
-# Ajouter le fichier modifié
-git add Dockerfile
+# Définir le répertoire de travail
+WORKDIR /app
 
-# Commit
-git commit -m "Fix: Update Dockerfile to use eclipse-temurin:17-jdk-alpine"
+# Copie du fichier JAR construit par Maven
+COPY target/*.jar app.jar
 
-# Push vers GitHub
-git push origin master
+# Exposer le port (8080 pour Spring Boot)
+EXPOSE 8080
+
+# Commande de démarrage
+ENTRYPOINT ["java", "-jar", "app.jar"]
