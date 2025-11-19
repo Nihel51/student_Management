@@ -1,8 +1,11 @@
-# Image de base Java
-FROM openjdk:17-jdk-alpine
+# Vérifier que vous êtes à la racine du projet
+cd ~/student_Management
 
-# Copie du fichier JAR construit par Maven
-COPY target/*.jar app.jar
+# Ajouter le fichier modifié
+git add Dockerfile
 
-# Commande de démarrage
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+# Commit
+git commit -m "Fix: Update Dockerfile to use eclipse-temurin:17-jdk-alpine"
+
+# Push vers GitHub
+git push origin master
